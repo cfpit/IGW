@@ -1,0 +1,24 @@
+/* selector de id  */
+#texto {
+    color: #ff0000;
+    /* hexadecimal  #f00 */
+    color: red;
+    /* literal */
+    color: rgb(255, 0, 0);
+    /* rgb */
+}
+
+/* selector de clase */
+.resaltado {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* selector de etiqueta */
+body {
+    background-image: url('../imagenes/fondo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}

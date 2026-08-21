@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer sitio Web!!</title>
+    <style>
+        
+
+        h1 {
+            color: #333;
+        }
+
+        h3 {
+            color: #666;
+        }
+
+        h6 {
+            color: #999;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <link rel="stylesheet" href="style/estilos.css">
+</head>
+<body>
+    <h1 id="texto">¡Bienvenido a mi primer sitio Web!</h1>
+    <h3 class="resaltado">¡Bienvenido a mi primer sitio Web!</h3>
+    <h6>¡Bienvenido a mi primer sitio Web!</h6>
+
+    <br><br><br><br>
+    <hr>
+    <!-- comentario valido en HTML -->
+    <p id="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit.<span class="resaltado"> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt</span> ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <br>
+
+
+    
+
+    <h3>Lista Desordenada</h3>
+    <!-- ul: unordered list -->
+    <!-- li: list item -->
+
+    <!-- <ul type="disc"> -->
+    <ul type="circle">
+    <!-- <ul type="square"> -->
+        <li>Argentina</li>
+        <li>Brasil</li>
+        <li>Uruguay</li>
+    </ul>
+    
+    
+    <h3>Lista Ordenada</h3>
+    <!-- ol: ordered list -->
+    <!-- li: list item -->
+
+    <!-- <ol type="1"> -->
+    <!-- <ol type="A"> -->
+    <ol type="I">
+        <li>Java</li>
+        <li>Python</li>
+        <li>JavaScript</li>
+    </ol>
+
+    <br>
+
+    <h3>Enlaces</h3>
+    <!-- Enlace absoluto -->
+    <a href="https://www.google.com" target="_blank">Ir a Google</a>
+
+    <br>
+
+    <!-- Enlace relativo -->
+    <a href="pagina2.html">Ir a la página 2</a>
+    
+    <br>
+    <!-- Anclaje al comienzo de la pagina -->
+    <a href="#">Ir al comienzo de la página</a>
+    
+    
+    <br>
+    <!-- Anclaje al comienzo del parrafo -->
+    <a href="#texto">Ir al comienzo del párrafo</a>
+
+    <br>
+
+    <h3>Enlaces con imagenes</h3>
+    <a href="https://www.google.com" target="_blank">
+        <img src="google.jpg" alt="Google" width="3%">
+    </a>
+
+    <br>
+
+    <h3>Tablas</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan = "2">Juan</td>
+                <!-- <td>25</td> -->
+                <td>Buenos Aires</td>
+            </tr>
+            <tr>
+                <td>María</td>
+                <td>30</td>
+                <td rowspan="2">Madrid</td>
+            </tr>
+            <tr>
+                <td>Carlos</td>
+                <td>28</td>
+                <!-- <td>Ciudad de México</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h3>Formularios</h3>
+    <form action="destino.html">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <br><br>
+        <!-- select -->
+        <label for="pais">País:</label>
+        <select id="pais" name="pais" required>
+            <option value="">Seleccione un país</option>
+            <option value="argentina">Argentina</option>
+            <option value="brasil">Brasil</option>
+            <option value="uruguay">Uruguay</option>
+        </select>
+        <br><br>
+        <!-- textarea -->
+        <label for="mensaje" style="vertical-align: top;">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea>
+        <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <br><br>
+
+    <!-- audio -->
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <br><br>
+
+    <!-- video -->
+    <video width="320" height="240" controls>
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+</body>
+</html>
+
+
+  
