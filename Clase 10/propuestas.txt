@@ -1,0 +1,36 @@
+- Inteligencia Artificial y Productividad
+Esta microcredencial busca aplicar la IA en el trabajo diario para potenciar las habilidades profesionales, aumentar la productividad y optimizar la gestión del tiempo. 
+
+
+- Desarrollo de Agentes de IA y Aplicaciones Inteligentes con Python
+Con esta microcredencial se puede alcanzar competencias en el desarrollo de soluciones basadas en inteligencia artificial con Python. 
+
+
+- Automatización y Agentes IA con N8N
+Esta microcredencial permite diseñar, implementar y operar automatizaciones inteligentes con n8n, integrando agentes de IA y servicios en la nube para resolver procesos reales de negocio.
+
+
+- Automatización con Claude
+La idea de esta microcredencial es construir agentes, automatizaciones avanzadas y sistemas IA conectados con herramientas reales.
+
+- Programacion de Aplicaciones mediante IA (Vibe Coding)
+La finalidad de esta microcredencial es crear apps sin programar, mediante la IA.
+
+
+- Desarrollo Mobile Multiplataforma (Android / Ios)
+
+
+- Testing Automatizado con IA 
+
+
+- Ciberseguridad Mobile
+La idea de esta microcredencial es prevenir ataques en dispositivos y aplicaciones móviles.
+
+
+- Seguridad informatica
+La idea de esta microcredencial es aprender a proteger los sistemas e infraestructura digitales, identificando riesgos y aplicando prácticas de seguridad en entornos tecnológicos.
+
+
+
+- Publicidad Digital para Emprendedores (Meta Ads / Google Ads / Tiktok Ads)
+La finalidad de esta microcredencial es diseñar, configurar, optimizar y escalar campañas de pauta pagada que conviertan dinero invertido en resultados medibles (ventas, clientes potenciales o reconocimiento de marca).
