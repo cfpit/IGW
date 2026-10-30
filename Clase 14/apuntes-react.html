@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apuntes React - Guía Completa de Instalación y Práctica</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #334155;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --code-bg: #f1f5f9;
+      --green: #15803d;
+      --yellow: #a16207;
+      --badge-legacy: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p, ul {
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    ul {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .badge-rec {
+      background-color: rgba(74, 222, 128, 0.15);
+      color: var(--green);
+      border: 1px solid var(--green);
+    }
+
+    .badge-legacy {
+      background-color: rgba(248, 113, 113, 0.15);
+      color: var(--badge-legacy);
+      border: 1px solid var(--badge-legacy);
+    }
+
+    .badge-tip {
+      background-color: rgba(250, 204, 21, 0.15);
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
+    }
+
+    pre {
+      background-color: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: #0369a1;
+      font-weight: 600;
+    }
+
+    pre code {
+      color: #0f172a;
+      white-space: pre;
+      font-weight: normal;
+    }
+
+    .note {
+      background: #e0f2fe;
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      border-radius: 4px 8px 8px 4px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: #0369a1;
+    }
+
+    .note strong {
+      color: #0c4a6e;
+    }
+
+    .note-warning {
+      background: #fef9c3;
+      border-left-color: #ca8a04;
+      color: #854d0e;
+    }
+
+    .note-warning strong {
+      color: #713f12;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚛️ Apuntes de React</h1>
+      <p>Guía de instalación, configuración, gestión de paquetes y consumo de datos locales</p>
+    </header>
+
+    <!-- SECCIÓN 1: NODE.JS -->
+    <section>
+      <h2>1. Instalación de Node.js</h2>
+      <p>
+        Descargar el instalador desde la web oficial: 
+        <a href="https://nodejs.org/es" target="_blank" rel="noreferrer">https://nodejs.org/es</a>
+      </p>
+      <p>👉 <strong>Elegir siempre la última versión LTS</strong> (Long Term Support / Soporte a largo plazo).</p>
+
+      <h3>Verificación en la terminal</h3>
+      <p>Abre tu terminal (PowerShell, CMD o Bash) y comprueba las versiones instaladas:</p>
+      <pre><code>node -v
+npm -v</code></pre>
+    </section>
+
+    <!-- SECCIÓN 2: CREACIÓN DE PROYECTOS -->
+    <section>
+      <h2>2. Creación de Proyectos en React</h2>
+
+      <!-- OPCION A -->
+      <h3>Opción A: Instalación Global de CRA <span class="badge badge-legacy">Obsoleta</span></h3>
+      <p>Instala la herramienta en todo el sistema:</p>
+      <pre><code># 1) Instalación de React en forma global
+npm install -g create-react-app
+
+# 2) Creación del proyecto
+create-react-app proyecto1</code></pre>
+
+      <!-- OPCION B -->
+      <h3>Opción B: Creación con npx <span class="badge badge-legacy">Obsoleta</span></h3>
+      <p>Crea el proyecto descargando la última versión temporal sin instalar globalmente:</p>
+      <pre><code># 1-2) Creación del proyecto
+npx create-react-app proyecto1
+
+# 3) Ejecución de la aplicación
+cd proyecto1
+npm start</code></pre>
+
+      <!-- OPCION C -->
+      <h3>Opción C: Usando Vite <span class="badge badge-rec">Recomendada</span></h3>
+      <p>Es la forma estándar y ultra veloz actualmente.</p>
+      <pre><code># 1) Creación de la estructura del proyecto
+npm create vite@latest proyecto1 -- --template react
+
+# 2) Entrar a la carpeta, instalar y ejecutar
+cd proyecto1
+npm install
+npm run dev</code></pre>
+      <div class="note">
+        <strong>💡 Nota sobre npm install con Vite:</strong> Este comando es rapidísimo porque el <code>node_modules</code> que descarga es muchísimo más liviano y moderno que el que descargaba <em>create-react-app</em>.
+      </div>
+
+      <!-- OPCION D -->
+      <h3>Opción D: Usando pnpm <span class="badge badge-tip">Ahorro Máximo de Disco</span></h3>
+      <p>
+        Si creas múltiples proyectos de práctica y no quieres que cada uno duplique cientos de MB en tu disco:
+      </p>
+      <pre><code># 1) Instalar pnpm una sola vez de forma global
+npm install -g pnpm
+
+# 2) Crear proyectos nuevos con pnpm y Vite
+pnpm create vite proyecto3 --template react
+cd proyecto3
+pnpm install
+pnpm dev</code></pre>
+
+      <p><strong>Migrar proyectos existentes a pnpm:</strong></p>
+      <ul>
+        <li>Borra la carpeta <code>node_modules</code> pesada de tus proyectos ya creados.</li>
+        <li>Entra a cada uno y ejecuta:</li>
+      </ul>
+      <pre><code># En proyecto1:
+cd proyecto1
+pnpm install
+
+# En proyecto2:
+cd ../proyecto2
+pnpm install</code></pre>
+      <div class="note note-warning">
+        <strong>⚠️ Beneficio con OneDrive:</strong> Al usar <code>pnpm</code>, las librerías se guardan centralizadas en tu disco local fuera de OneDrive, evitando que OneDrive colapse intentando sincronizar miles de archivos pequeños a la nube.
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: CONSUMO DE DATOS JSON -->
+    <section>
+      <h2>3. Consumo de Datos Locales (.json) en React</h2>
+      <p>
+        Para consumir datos desde un archivo local en lugar de una API remota, usamos el archivo <code>frutas.json</code>:
+      </p>
+      
+      <h3>Archivo de datos: <code>frutas.json</code></h3>
+      <pre><code>[
+  {
+    "codigo": 1,
+    "descripcion": "papas",
+    "precio": 12.33
+  },
+  {
+    "codigo": 2,
+    "descripcion": "manzanas",
+    "precio": 54
+  }
+]</code></pre>
+
+      <hr style="border-color: var(--border); margin: 1.8rem 0;" />
+
+      <!-- METODO 1 -->
+      <h3>Método 1: En carpeta <code>public/</code> (Con <code>fetch</code> y <code>useEffect</code>) <span class="badge badge-rec">Recomendada</span></h3>
+      <p><strong>Ubicación del archivo:</strong> <code>proyecto3/public/frutas.json</code></p>
+      <p>Se lee directamente con <code>fetch('/frutas.json')</code> simulando una API:</p>
+      <pre><code>import { useState, useEffect } from 'react';
+
+function App() {
+
+  const [articulos, setArticulos] = useState([])
+
+  useEffect(() => {
+    // Leemos el archivo desde la raíz del servidor público de Vite
+    fetch('/frutas.json')
+      .then((response) => {
+        return response.json()
+      })
+      .then((articulos) => {
+        setArticulos(articulos)
+      })
+  }, [])
+
+  return (
+    &lt;div&gt;
+      &lt;table border="1"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Código&lt;/th&gt;
+            &lt;th&gt;Descripción&lt;/th&gt;
+            &lt;th&gt;Precio&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {articulos.map(art =&gt; {
+            return (
+              &lt;tr key={art.codigo}&gt;
+                &lt;td&gt;{art.codigo}&lt;/td&gt;
+                &lt;td&gt;{art.descripcion}&lt;/td&gt;
+                &lt;td&gt;{art.precio}&lt;/td&gt;
+              &lt;/tr&gt;
+            );
+          })}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App</code></pre>
+
+      <hr style="border-color: var(--border); margin: 1.8rem 0;" />
+
+      <!-- METODO 2 -->
+      <h3>Método 2: En carpeta <code>src/</code> (Importación directa sin <code>fetch</code>)</h3>
+      <p><strong>Ubicación:</strong> <code>proyecto3/src/frutas.json</code></p>
+      <p>Importa los datos directamente en el componente sin peticiones asíncronas:</p>
+      <pre><code>import { useState } from 'react';
+import frutasData from './frutas.json';
+
+function App() {
+
+  const [articulos, setArticulos] = useState(frutasData)
+
+  return (
+    &lt;div&gt;
+      &lt;table border="1"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Código&lt;/th&gt;
+            &lt;th&gt;Descripción&lt;/th&gt;
+            &lt;th&gt;Precio&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {articulos.map(art =&gt; {
+            return (
+              &lt;tr key={art.codigo}&gt;
+                &lt;td&gt;{art.codigo}&lt;/td&gt;
+                &lt;td&gt;{art.descripcion}&lt;/td&gt;
+                &lt;td&gt;{art.precio}&lt;/td&gt;
+              &lt;/tr&gt;
+            );
+          })}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App</code></pre>
+    </section>
+
+    <!-- SECCIÓN 4: ESTILOS TAILWIND EN APP.CSS -->
+    <section>
+      <h2>4. Estilos de Tailwind para la Tabla en <code>App.css</code></h2>
+      <p>
+        Tailwind está pensado para usarse con clases en el JSX (<code>className="..."</code>), pero se pueden aplicar sus estilos a la tabla modificando únicamente <strong><code>src/App.css</code></strong>:
+      </p>
+
+      <!-- CASO 1 -->
+      <h3>Caso 1: Replicar el diseño de Tailwind con CSS Puro <span class="badge badge-rec">Recomendada / Sin Instalar Nada</span></h3>
+      <p>
+        No requiere instalar paquetes ni configurar nada. Pega este contenido directamente dentro de <code>src/App.css</code>:
+      </p>
+      <pre><code>/* Contenedor centrado */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Tabla con diseño moderno estilo Tailwind */
+table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+/* Encabezados */
+th {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Celdas */
+td {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Efecto hover al pasar el ratón por la fila */
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Quitar el borde inferior a la última fila */
+tbody tr:last-child td {
+  border-bottom: none;
+}</code></pre>
+
+      <div class="note">
+        <strong>💡 Consejo para App.jsx:</strong> Para que se luzca el nuevo diseño, quita el atributo <code>border="1"</code> de la etiqueta <code>&lt;table&gt;</code> en tu archivo <code>App.jsx</code>.
+      </div>
+
+      <hr style="border-color: var(--border); margin: 1.8rem 0;" />
+
+      <!-- CASO 2 -->
+      <h3>Caso 2: Usando Tailwind Oficial con la directiva <code>@apply</code></h3>
+      <p>
+        Si prefieres usar Tailwind oficial en tu proyecto Vite, sigue estos 3 pasos:
+      </p>
+
+      <h4>1. Instalar dependencias en la terminal:</h4>
+      <pre><code>pnpm add -D tailwindcss @tailwindcss/vite</code></pre>
+
+      <h4>2. Configurar <code>vite.config.js</code>:</h4>
+      <p>Importas <code>@tailwindcss/vite</code> y lo agregas en el arreglo <code>plugins</code>:</p>
+      <pre><code>import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite' // 1. Importas el plugin
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(), // 2. Lo agregas aquí
+  ],
+})</code></pre>
+
+      <h4>3. En <code>src/App.css</code> con <code>@apply</code>:</h4>
+      <pre><code>@import "tailwindcss";
+
+table {
+  @apply w-full max-w-md mx-auto bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden;
+}
+
+th {
+  @apply bg-gray-50 text-gray-500 text-xs font-bold uppercase px-6 py-3 border-b border-gray-200;
+}
+
+td {
+  @apply px-6 py-4 text-sm text-gray-800 border-b border-gray-100;
+}</code></pre>
+    </section>
+  </div>
+</body>
+</html>
