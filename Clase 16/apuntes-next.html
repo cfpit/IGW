@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apuntes Next.js - Guía Completa de Instalación, Configuración y Hola Mundo</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #334155;
+      --accent: #000000;
+      --accent-blue: #0284c7;
+      --code-bg: #f1f5f9;
+      --green: #15803d;
+      --yellow: #a16207;
+      --badge-legacy: #b91c1c;
+      --badge-next: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      background: #ffffff;
+      color: #0f172a;
+      border: 2px solid #0f172a;
+      font-size: 1.8rem;
+      font-weight: 800;
+      padding: 0.3rem 0.9rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      letter-spacing: -1px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h4 {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p,
+    ul,
+    ol {
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .badge-rec {
+      background-color: rgba(74, 222, 128, 0.15);
+      color: var(--green);
+      border: 1px solid var(--green);
+    }
+
+    .badge-next {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid var(--border);
+    }
+
+    .badge-tip {
+      background-color: rgba(250, 204, 21, 0.15);
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
+    }
+
+    .badge-legacy {
+      background-color: rgba(248, 113, 113, 0.15);
+      color: var(--badge-legacy);
+      border: 1px solid var(--badge-legacy);
+    }
+
+    pre {
+      background-color: #f8fafc;
+      color: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    pre code {
+      color: #0f172a;
+      white-space: pre;
+      font-weight: normal;
+    }
+
+    .note {
+      background: #e0f2fe;
+      border-left: 4px solid var(--accent-blue);
+      padding: 1rem;
+      border-radius: 4px 8px 8px 4px;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: #0369a1;
+    }
+
+    .note strong {
+      color: #0c4a6e;
+    }
+
+    .note-warning {
+      background: #fef9c3;
+      border-left-color: #ca8a04;
+      color: #854d0e;
+    }
+
+    .note-warning strong {
+      color: #713f12;
+    }
+
+    .note-success {
+      background: #f0fdf4;
+      border-left-color: #16a34a;
+      color: #166534;
+    }
+
+    .note-success strong {
+      color: #14532d;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .terminal-window {
+      background-color: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1rem 0;
+      color: #0f172a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .terminal-prompt {
+      color: #475569;
+    }
+
+    .terminal-choice {
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    /* Explorador visual de carpetas y archivos */
+    .file-explorer {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .explorer-bar {
+      background: #f1f5f9;
+      padding: 0.65rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .explorer-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .explorer-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #f87171;
+    }
+
+    .dot-yellow {
+      background: #facc15;
+    }
+
+    .dot-green {
+      background: #4ade80;
+    }
+
+    .explorer-content {
+      padding: 1rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92rem;
+      background: #ffffff;
+    }
+
+    .node-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .node-row:hover {
+      background: #f8fafc;
+    }
+
+    .node-target {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .node-badge {
+      font-size: 0.78rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .badge-star {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+      font-weight: 700;
+    }
+
+    .badge-layout {
+      background: #f3e8ff;
+      color: #7e22ce;
+      border: 1px solid #d8b4fe;
+      font-weight: 600;
+    }
+
+    .badge-gray {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+
+    .level-0 {
+      padding-left: 0.5rem;
+      font-weight: 700;
+    }
+
+    .level-1 {
+      padding-left: 1.8rem;
+      border-left: 2px solid #e2e8f0;
+      margin-left: 0.8rem;
+    }
+
+    .level-2 {
+      padding-left: 3.2rem;
+      border-left: 2px solid #cbd5e1;
+      margin-left: 0.8rem;
+    }
+
+    .level-3 {
+      padding-left: 4.6rem;
+      border-left: 2px solid #0284c7;
+      margin-left: 0.8rem;
+    }
+
+    .row-highlight {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+    }
+
+    .row-highlight .node-target {
+      color: #0284c7;
+      font-weight: bold;
+    }
+
+    /* Tarjetas explicativas */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .feature-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      border-top: 4px solid var(--accent-blue);
+    }
+
+    .feature-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-badge">▲ Next.js</div>
+      <h1>Apuntes de Next.js</h1>
+      <p>Guía esencial de instalación, configuración, acceso a documentación y primeros pasos (Hola Mundo)</p>
+    </header>
+
+    <!-- SECCIÓN 1: ¿QUÉ ES NEXT.JS? -->
+    <section>
+      <h2>1. ¿Qué es Next.js y en qué se diferencia de React puro?</h2>
+      <p>
+        <strong>React</strong> es una biblioteca para construir interfaces de usuario que corre típicamente del lado del
+        cliente (en el navegador del usuario).
+      </p>
+      <p>
+        <strong>Next.js</strong> es un <strong>framework de React para producción</strong> creado por Vercel. Integra
+        React pero añade arquitectura de servidor, enrutamiento basado en archivos, optimización automática de imágenes
+        y fuentes, renderizado en servidor (SSR) y generación estática (SSG).
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>React Puro (con Vite)</th>
+            <th>Next.js (App Router)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Renderizado</strong></td>
+            <td>100% en cliente (SPA / CSR). El navegador descarga todo el JS.</td>
+            <td>Híbrido: Server Components por defecto + Client Components.</td>
+          </tr>
+          <tr>
+            <td><strong>Enrutamiento (Routing)</strong></td>
+            <td>Manual mediante librerías externas (<code>react-router-dom</code>).</td>
+            <td>Automático basado en estructura de carpetas (<code>app/</code>).</td>
+          </tr>
+          <tr>
+            <td><strong>SEO (Buscadores)</strong></td>
+            <td>Más complejo (el HTML inicial viene prácticamente vacío).</td>
+            <td>Excelente (el HTML viene renderizado desde el servidor).</td>
+          </tr>
+          <tr>
+            <td><strong>Servidor de Desarrollo</strong></td>
+            <td><code>http://localhost:5173</code></td>
+            <td><code>http://localhost:3000</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECCIÓN 2: INSTALACIÓN Y REQUISITOS -->
+    <section>
+      <h2>2. ¿Qué se debe instalar? (Requisitos Previos)</h2>
+      <p>Para trabajar con Next.js necesitas tener instalado en tu computadora:</p>
+
+      <h3>1) Node.js (Entorno de ejecución)</h3>
+      <p>
+        Next.js requiere <strong>Node.js 18.18.0 o superior</strong> (se recomienda la versión LTS actual).
+      </p>
+      <p>
+        🔗 Descarga oficial: <a href="https://nodejs.org/es" target="_blank" rel="noreferrer">https://nodejs.org/es</a>
+        (Elegir la versión marcada como <strong>LTS</strong>).
+      </p>
+
+      <h3>2) Verificación en la Terminal</h3>
+      <p>Abre tu consola (PowerShell, CMD o Git Bash) y comprueba las versiones instaladas:</p>
+      <pre><code>node -v
+npm -v</code></pre>
+
+      <h3>3) Gestor de paquetes recomendado: pnpm</h3>
+      <p>
+        Al igual que aprendiste en React, si estás trabajando dentro de carpetas sincronizadas por
+        <strong>OneDrive</strong>, el uso de <code>pnpm</code> es altamente recomendable para evitar llenar el disco y
+        prevenir bloqueos de sincronización:
+      </p>
+      <pre><code># Instalar pnpm globalmente una sola vez (si no lo tienes):
+npm install -g pnpm
+
+# Verificar instalación:
+pnpm -v</code></pre>
+
+      <div class="note note-warning">
+        <strong>⚠️ Nota para PowerShell en Windows:</strong> Si al ejecutar <code>npm</code> o <code>pnpm</code> recibes
+        el error <em>"la ejecución de scripts está deshabilitada en este sistema (about_Execution_Policies)"</em>,
+        ejecuta en PowerShell como Administrador:
+        <br />
+        <code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code>
+        <br />
+        O también puedes invocar el comando directamente como <code>npm.cmd</code> o <code>pnpm.cmd</code>.
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: DOCUMENTACIÓN OFICIAL -->
+    <section>
+      <h2>3. ¿Cómo acceder a la Documentación Oficial en la Web?</h2>
+      <p>La documentación de Next.js es una de las más completas del ecosistema web. Puedes acceder a ella a través de
+        estos enlaces clave:</p>
+
+      <ul>
+        <li>
+          🌐 <strong>Sitio Web Oficial:</strong>
+          <a href="https://nextjs.org" target="_blank" rel="noreferrer">https://nextjs.org</a>
+          — Página principal con novedades, características y casos de uso.
+        </li>
+        <li>
+          📖 <strong>Documentación Oficial (Next.js Docs):</strong>
+          <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer">https://nextjs.org/docs</a>
+          — Guías completas de instalación, routing, fetching de datos, estilizado y despliegue.
+        </li>
+        <li>
+          🎓 <strong>Tutorial Interactivo Oficial (Next.js Learn):</strong>
+          <a href="https://nextjs.org/learn" target="_blank" rel="noreferrer">https://nextjs.org/learn</a>
+          — Curso guiado paso a paso con ejercicios prácticos para aprender desde cero.
+        </li>
+        <li>
+          📁 <strong>Ejemplos Oficiales en GitHub:</strong>
+          <a href="https://github.com/vercel/next.js/tree/canary/examples" target="_blank"
+            rel="noreferrer">github.com/vercel/next.js/examples</a>
+          — Cientos de proyectos de ejemplo con Tailwind, autenticación, bases de datos, etc.
+        </li>
+      </ul>
+
+      <div class="note">
+        <strong>💡 Consejo crucial en la documentación:</strong> Asegúrate de que el selector superior en la web de docs
+        esté en <strong>App Router</strong> (la arquitectura actual recomendada) en vez de <em>Pages Router</em> (la
+        arquitectura anterior).
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: CREACIÓN DE PROYECTOS -->
+    <section>
+      <h2>4. Creación de Proyectos en Next.js</h2>
+      <p>Next.js provee la herramienta oficial <strong><code>create-next-app</code></strong>, la cual configura
+        automáticamente todo el entorno.</p>
+
+      <h3>Método A: Asistente Interactivo (Recomendado)</h3>
+      <p>Sitúate en la terminal dentro de tu carpeta <code>next</code> y ejecuta:</p>
+      <pre><code># Con npx (npm):
+npx create-next-app@latest
+
+# O con pnpm (más rápido y ligero):
+pnpm create next-app</code></pre>
+
+      <h3>Preguntas del Asistente y Opciones Recomendadas:</h3>
+      <div class="terminal-window">
+        <p><span class="terminal-prompt">✔ What is your project named?</span> … <span
+            class="terminal-choice">proyecto1</span></p>
+        <p><span class="terminal-prompt">✔ Would you like to use TypeScript?</span> … <span
+            class="terminal-choice">No</span> (o Yes si prefieres tipado)</p>
+        <p><span class="terminal-prompt">✔ Would you like to use ESLint?</span> … <span
+            class="terminal-choice">Yes</span></p>
+        <p><span class="terminal-prompt">✔ Would you like to use Tailwind CSS?</span> … <span
+            class="terminal-choice">No</span> (o Yes si usarás Tailwind)</p>
+        <p><span class="terminal-prompt">✔ Would you like your code inside a `src/` directory?</span> … <span
+            class="terminal-choice">Yes</span> (mantiene el proyecto ordenado)</p>
+        <p><span class="terminal-prompt">✔ Would you like to use App Router? (recommended)</span> … <span
+            class="terminal-choice">Yes</span></p>
+        <p><span class="terminal-prompt">✔ Would you like to use Turbopack for `next dev`?</span> … <span
+            class="terminal-choice">Yes</span> (compilación ultrarrápida)</p>
+        <p><span class="terminal-prompt">✔ Would you like to customize the import alias (@/*)?</span> … <span
+            class="terminal-choice">No</span></p>
+      </div>
+
+      <!-- EXPLICACIÓN DETALLADA DE PREGUNTAS CLAVE -->
+      <div class="cards-grid" style="margin-top: 1.2rem;">
+        <div class="feature-card">
+          <h4>🚀 1. Would you like to use App Router? (recommended) → <code>Yes</code></h4>
+          <p>
+            <strong>¿Qué es?</strong> Es el motor moderno de enrutamiento y renderizado de Next.js.
+          </p>
+          <ul style="margin-top: 0.5rem; font-size: 0.88rem; padding-left: 1.2rem;">
+            <li><strong>Pages Router (antiguo/legado):</strong> Guardaba las páginas en <code>pages/</code>. Todo se procesaba de forma tradicional y requería configuraciones complejas.</li>
+            <li><strong>App Router (moderno / actual):</strong> Organiza la app en <code>src/app/</code>. Incluye <em>React Server Components</em> por defecto (el servidor envía el HTML ya armado, lo que hace la web mucho más rápida y con mejor SEO) y permite layouts fijos sin recargar la pantalla.</li>
+            <li><strong>¿Por qué responder Yes?</strong> Porque es el estándar oficial de Next.js y toda la documentación moderna está basada en él.</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h4>🔗 2. Would you like to customize the import alias (@/*)? → <code>No</code></h4>
+          <p>
+            <strong>¿Qué es un "import alias"?</strong> Es un atajo para no tener que escribir rutas relativas largas y confusas como <code>../../../components/Boton</code>.
+          </p>
+          <ul style="margin-top: 0.5rem; font-size: 0.88rem; padding-left: 1.2rem;">
+            <li>El símbolo <code>@/</code> apunta directamente a la raíz de tu código (<code>src/</code>).</li>
+            <li>Sin importar cuán profundo esté un archivo, puedes importar fácilmente con: <code>import Boton from '@/components/Boton'</code>.</li>
+            <li><strong>¿Por qué responder No?</strong> Porque Next.js te pregunta <em>"¿Deseas personalizar (cambiar) el alias por otro símbolo?"</em>. Al responder <strong>No</strong>, le dices que mantenga el estándar <code>@/*</code>, que es el más cómodo y universal. (Si respondes <em>Yes</em>, tendrías que inventar tú otro prefijo como <code>~/*</code> o <code>#/*</code>).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Método B: Creación Rápida en una sola línea (Sin preguntas)</h3>
+      <p>Si quieres que se cree al instante sin responder cada opción manualmente:</p>
+      <pre><code># Con npx (npm tradicional):
+npx create-next-app@latest proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*"
+
+# ⚡ ULTRA RÁPIDO (Usando pnpm para no esperar minutos):
+pnpm create next-app proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm</code></pre>
+
+      <!-- NOTA DE VELOCIDAD Y ONEDRIVE -->
+      <div class="note note-warning">
+        <strong>⚡ ¿Por qué es tan lento <code>npx</code> y cómo acelerarlo al máximo?</strong>
+        <p style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+          Si notas que la creación del proyecto se queda colgada durante varios minutos en <em>"Installing dependencies..."</em>, se debe a dos motivos:
+        </p>
+        <ol style="padding-left: 1.2rem; margin-bottom: 0.5rem; font-size: 0.92rem;">
+          <li>
+            <strong>El bloqueo de OneDrive (El principal culpable):</strong> Tu carpeta está dentro de <code>OneDrive</code>. Cuando <code>npm</code> descarga las librerías, crea más de <strong>40.000 archivos diminutos</strong> en <code>node_modules</code>. OneDrive intenta inspeccionar y sincronizar cada uno a la nube en tiempo real, congelando el disco.
+            <br />
+            👉 <em>Solución:</em> Haz clic derecho en el ícono de la nube de OneDrive en tu barra de tareas y elige <strong>"Pausar sincronización" (por 2 horas)</strong> mientras creas tus proyectos.
+          </li>
+          <li>
+            <strong>Usa siempre el motor <code>pnpm</code>:</strong> Como ya tienes instalado <code>pnpm</code> en tu equipo, úsalo agregando la bandera <code>--use-pnpm</code>. <code>pnpm</code> no descarga archivos repetidos; reutiliza copias globales ya guardadas en tu disco y crea el proyecto en <strong>15 a 25 segundos</strong> en vez de 5 minutos.
+          </li>
+        </ol>
+      </div>
+
+      <h3>Comandos del Proyecto</h3>
+      <p>Una vez dentro de la carpeta del proyecto (<code>cd proyecto1</code>), los comandos principales son:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Comando (npm)</th>
+            <th>Comando (pnpm)</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>npm run dev</code></td>
+            <td><code>pnpm dev</code></td>
+            <td>Inicia el servidor local de desarrollo en <code>http://localhost:3000</code> con recarga rápida.</td>
+          </tr>
+          <tr>
+            <td><code>npm run build</code></td>
+            <td><code>pnpm build</code></td>
+            <td>Compila y optimiza la aplicación para producción.</td>
+          </tr>
+          <tr>
+            <td><code>npm run start</code></td>
+            <td><code>pnpm start</code></td>
+            <td>Inicia el servidor en modo producción (requiere previo <code>build</code>).</td>
+          </tr>
+          <tr>
+            <td><code>npm run lint</code></td>
+            <td><code>pnpm lint</code></td>
+            <td>Verifica errores y advertencias de código con ESLint.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECCIÓN 5: ESTRUCTURA DE ARCHIVOS -->
+    <section>
+      <h2>5. Estructura de Carpetas en Next.js (App Router)</h2>
+      <p>
+        En React puro con Vite todo tu código vivía suelto dentro de <code>src/</code>. En <strong>Next.js</strong>,
+        todo se organiza de forma más limpia e intuitiva dentro de la carpeta especial
+        <strong><code>src/app/</code></strong>.
+      </p>
+
+      <!-- Explorador Visual -->
+      <div class="file-explorer">
+        <div class="explorer-bar">
+          <div class="explorer-dots">
+            <span class="explorer-dot dot-red"></span>
+            <span class="explorer-dot dot-yellow"></span>
+            <span class="explorer-dot dot-green"></span>
+          </div>
+          <span>Explorador de Archivos — proyecto1</span>
+        </div>
+
+        <div class="explorer-content">
+          <!-- Raiz -->
+          <div class="node-row level-0">
+            <div class="node-target">📁 proyecto1/</div>
+            <span class="node-badge badge-gray">Carpeta raíz del proyecto</span>
+          </div>
+
+          <!-- public -->
+          <div class="node-row level-1">
+            <div class="node-target">📁 public/</div>
+            <span class="node-badge badge-gray">Archivos estáticos (fotos, iconos, json)</span>
+          </div>
+
+          <!-- src -->
+          <div class="node-row level-1">
+            <div class="node-target">📁 src/</div>
+            <span class="node-badge badge-gray">Código fuente</span>
+          </div>
+
+          <!-- app -->
+          <div class="node-row level-2">
+            <div class="node-target">📁 app/</div>
+            <span class="node-badge badge-star">⭐ El corazón de tu app</span>
+          </div>
+
+          <!-- page.js -->
+          <div class="node-row level-3 row-highlight">
+            <div class="node-target">📄 page.js</div>
+            <span class="node-badge badge-star">⭐ Tu página de inicio (equivale a App.jsx)</span>
+          </div>
+
+          <!-- layout.js -->
+          <div class="node-row level-3">
+            <div class="node-target">📄 layout.js</div>
+            <span class="node-badge badge-layout">🧱 Esqueleto HTML base (&lt;html&gt; y &lt;body&gt;)</span>
+          </div>
+
+          <!-- globals.css -->
+          <div class="node-row level-3">
+            <div class="node-target">🎨 globals.css</div>
+            <span class="node-badge badge-gray">Estilos CSS para todo el sitio</span>
+          </div>
+
+          <!-- favicon.ico -->
+          <div class="node-row level-3">
+            <div class="node-target">🖼️ favicon.ico</div>
+            <span class="node-badge badge-gray">Ícono de la pestaña del navegador</span>
+          </div>
+
+          <!-- Archivos de configuracion en raiz -->
+          <div class="node-row level-1">
+            <div class="node-target">⚙️ next.config.mjs</div>
+            <span class="node-badge badge-gray">Configuraciones de Next.js</span>
+          </div>
+
+          <div class="node-row level-1">
+            <div class="node-target">📦 package.json</div>
+            <span class="node-badge badge-gray">Librerías y scripts de ejecución</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Equivalencias React vs Next -->
+      <h3>Equivalencias Directas: Si ya sabes React...</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>En React (Vite)</th>
+            <th>En Next.js (App Router)</th>
+            <th>¿Para qué sirve?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>src/App.jsx</code></td>
+            <td><strong><code>src/app/page.js</code></strong></td>
+            <td>Es tu componente principal. Lo que pongas aquí es lo que se ve en la pantalla de inicio.</td>
+          </tr>
+          <tr>
+            <td><code>index.html</code></td>
+            <td><strong><code>src/app/layout.js</code></strong></td>
+            <td>Contiene las etiquetas <code>&lt;html&gt;</code> y <code>&lt;body&gt;</code> que envuelven todas las
+              páginas.</td>
+          </tr>
+          <tr>
+            <td><code>src/index.css</code></td>
+            <td><strong><code>src/app/globals.css</code></strong></td>
+            <td>Los estilos generales que aplican a todo el sitio web.</td>
+          </tr>
+          <tr>
+            <td><code>public/</code></td>
+            <td><strong><code>public/</code></strong></td>
+            <td>Imágenes y recursos que se leen directamente en el navegador (ej: <code>/foto.png</code>).</td>
+          </tr>
+          <tr>
+            <td><code>react-router-dom</code></td>
+            <td><strong>Crear carpetas en <code>app/</code></strong></td>
+            <td>Next.js no necesita librerías para rutas; crea las páginas automáticamente según las carpetas.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Tarjetas de los 3 Archivos Clave -->
+      <h3>Los 3 Archivos que vas a utilizar:</h3>
+      <div class="cards-grid">
+        <div class="feature-card">
+          <h4>⭐ <code>page.js</code></h4>
+          <p>
+            <strong>Tu pantalla visual:</strong> Es el componente React donde programas los textos, botones y
+            formularios que verá el usuario.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>🧱 <code>layout.js</code></h4>
+          <p>
+            <strong>Tu molde o estructura:</strong> Se mantiene fijo. Es ideal si en el futuro quieres poner un menú de
+            navegación o un pie de página que aparezca siempre.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h4>🎨 <code>globals.css</code></h4>
+          <p>
+            <strong>Tus estilos:</strong> Aquí defines fuentes, colores de fondo y clases CSS para usarlas en cualquier
+            parte de tu aplicación.
+          </p>
+        </div>
+      </div>
+
+      <!-- Enrutamiento automatico -->
+      <div class="note note-success">
+        <strong>💡 ¿Cómo se crean nuevas páginas? (Enrutamiento Automático)</strong>
+        <p style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+          En Next.js <strong>no instalas react-router-dom</strong>. Cada carpeta que creas dentro de
+          <code>src/app/</code> se convierte en una URL:
+        </p>
+        <ul>
+          <li><code>src/app/page.js</code> ➔ Abre en: <code>http://localhost:3000/</code> (Inicio)</li>
+          <li><code>src/app/contacto/page.js</code> ➔ Abre en: <code>http://localhost:3000/contacto</code></li>
+          <li><code>src/app/productos/page.js</code> ➔ Abre en: <code>http://localhost:3000/productos</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: PASO A PASO PARA EL HOLA MUNDO -->
+    <section>
+      <h2>6. Pasos para Generar el "Hola Mundo" (Ultra Rápido con pnpm)</h2>
+      <p>
+        En <code>App.jsx</code> de tu primer proyecto de React tenías simplemente <code>&lt;h1&gt;Hola mundo&lt;/h1&gt;</code>. En Next.js con App Router, el archivo equivalente es <strong><code>src/app/page.js</code></strong>. Realizamos todo el proceso con <strong><code>pnpm</code></strong> para crearlo en segundos y evitar que OneDrive se sature:
+      </p>
+
+      <!-- PASO 1 -->
+      <h3>Paso 1: Abrir la terminal en la carpeta next</h3>
+      <p>Asegúrate de estar ubicado en la raíz de tu carpeta <code>next</code>:</p>
+      <pre><code>cd "c:\Users\smata\OneDrive\Documentos\Nueva carpeta\igw\next"</code></pre>
+
+      <!-- PASO 2 -->
+      <h3>Paso 2: Crear el proyecto <code>proyecto1</code> con pnpm</h3>
+      <p><strong>Opción recomendada (directa en una sola línea y ultra rápida):</strong></p>
+      <pre><code>pnpm create next-app proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm</code></pre>
+
+      <p>O si prefieres usar el asistente interactivo:</p>
+      <pre><code>pnpm create next-app proyecto1 --use-pnpm</code></pre>
+
+      <div class="note note-success">
+        <strong>⚡ Respuestas recomendadas en el asistente:</strong>
+        <br />
+        TypeScript: <strong>No</strong> &nbsp;|&nbsp; ESLint: <strong>Yes</strong> &nbsp;|&nbsp; Tailwind: <strong>No</strong> &nbsp;|&nbsp; `src/`: <strong>Yes</strong> &nbsp;|&nbsp; App Router: <strong>Yes</strong> &nbsp;|&nbsp; Turbopack: <strong>Yes</strong> &nbsp;|&nbsp; Import alias: <strong>No</strong>
+      </div>
+
+      <!-- PASO 3 -->
+      <h3>Paso 3: Entrar al proyecto</h3>
+      <pre><code>cd proyecto1</code></pre>
+
+      <!-- PASO 4 -->
+      <h3>Paso 4: Modificar <code>src/app/page.js</code></h3>
+      <p>
+        Abre el archivo <strong><code>src/app/page.js</code></strong>, borra todo el contenido de plantilla que trae por defecto y escribe:
+      </p>
+      <pre><code>export default function Home() {
+  return (
+    &lt;h1&gt;Hola mundo&lt;/h1&gt;
+  );
+}</code></pre>
+
+      <!-- PASO 5 -->
+      <h3>Paso 5: (Opcional) Limpiar <code>src/app/globals.css</code></h3>
+      <p>
+        Para quitar los estilos oscuros por defecto y dejarlo limpio como en React, abre <strong><code>src/app/globals.css</code></strong> y déjalo así:
+      </p>
+      <pre><code>body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 2rem;
+}</code></pre>
+
+      <!-- PASO 6 -->
+      <h3>Paso 6: Iniciar el servidor con pnpm</h3>
+      <pre><code>pnpm dev</code></pre>
+
+      <!-- PASO 7 -->
+      <h3>Paso 7: Abrir en el navegador</h3>
+      <p>
+        Ingresa a 
+        👉 <a href="http://localhost:3000" target="_blank" rel="noreferrer"><strong>http://localhost:3000</strong></a> 
+        y verás tu <strong>Hola mundo</strong> en pantalla exactamente igual que en el primer proyecto de React.
+      </p>
+    </section>
+  </div>
+</body>
+
+</html>
