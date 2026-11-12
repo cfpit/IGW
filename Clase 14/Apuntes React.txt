@@ -1,0 +1,55 @@
+Instalacion de Node JS
+https://nodejs.org/es
+Elegir ultima version LTS
+
+Verificacion de instalacion en terminal
+node -v
+npm -v
+
+Creacion de proyectos
+Opcion A
+1) Instalación de React en forma global
+npm install -g create-react-app
+
+2) Creación del proyecto
+create-react-app proyecto1
+
+Opcion B
+1-2) Creación del proyecto
+npx create-react-app proyecto1
+
+3) Ejecucion de la aplicacion
+cd proyecto1
+npm start
+
+Opcion C (usando vite, mucho mas veloz)
+npm create vite@latest proyecto1 -- --template react
+
+Durante el proceso, te preguntará algunas opciones simples (podes elegir JavaScript o TypeScript según prefieras). Una vez creado, solo ejecuta:
+
+cd proyecto1
+npm install
+npm run dev
+
+Nota sobre npm install: Con Vite, este comando es rapidísimo porque el node_modules que descarga es muchísimo más liviano y moderno que el que descargaba create-react-app
+
+
+Opcion D
+
+Si varios proyectos comparten la misma carpeta node modules entonces conviene lo siguiente:
+
+# 1. Instalas pnpm una sola vez
+npm install -g pnpm
+
+Y a partir de ahora, cuando crees un proyecto nuevo:
+pnpm create vite proyecto3 --template react
+cd proyecto3
+pnpm install
+pnpm dev
+
+Borra las carpetas node_modules pesadas de tus proyectos ya existentes:
+Entra a proyecto1 y ejecuta:
+pnpm install
+
+Entra a proyecto2 y ejecuta:
+pnpm install
