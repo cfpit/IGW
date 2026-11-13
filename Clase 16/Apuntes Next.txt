@@ -1,0 +1,107 @@
+Instalacion de Node JS
+https://nodejs.org/es
+Elegir ultima version LTS (requiere Node 18.18+ o superior)
+
+Verificacion de instalacion en terminal
+node -v
+npm -v
+pnpm -v
+
+Documentacion oficial en la web:
+- Web oficial: https://nextjs.org
+- Documentacion: https://nextjs.org/docs (Recomendado: App Router)
+- Tutorial interactivo: https://nextjs.org/learn
+
+Creacion de proyectos
+
+Opcion A (Asistente interactivo recomendado con npx)
+npx create-next-app@latest
+
+Respuestas recomendadas:
+✔ What is your project named? … proyecto1
+✔ Would you like to use TypeScript? … No (o Yes si prefieres tipado)
+✔ Would you like to use ESLint? … Yes
+✔ Would you like to use Tailwind CSS? … No (o Yes si vas a usar Tailwind)
+✔ Would you like your code inside a `src/` directory? … Yes
+✔ Would you like to use App Router? (recommended) … Yes
+   -> Que es: La arquitectura moderna basada en src/app/ con Server Components y layouts persistentes.
+✔ Would you like to use Turbopack for `next dev`? … Yes
+✔ Would you like to customize the import alias (@/*)? … No
+   -> Que es: Pregunta si quieres cambiar el atajo @/*. Al poner 'No', conserva el atajo universal '@/...' para importar sin rutas relativas ../../
+
+Opcion B (Creacion directa en una sola linea sin preguntas)
+npx create-next-app@latest proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*"
+
+Opcion C (⚡ ULTRA RAPIDO usando pnpm en vez de npm lento)
+pnpm create next-app proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm
+
+TRUCO DE VELOCIDAD:
+1. Pausar la sincronizacion de OneDrive en la barra de tareas mientras se crea el proyecto (OneDrive bloquea el disco con node_modules).
+2. Usar 'pnpm' o la bandera '--use-pnpm', que tarda segundos en vez de varios minutos.
+
+Ejecucion de la aplicacion:
+cd proyecto1
+npm run dev
+# o con pnpm:
+pnpm dev
+
+Abrir en navegador: http://localhost:3000
+
+Estructura esencial de carpetas en Next.js (App Router):
+proyecto1/
+  ├── public/                -> Archivos estaticos (imagenes, logos, json)
+  ├── src/
+  │    └── app/              -> Carpeta principal (aqui va tu web)
+  │         ├── page.js      -> TU PANTALLA PRINCIPAL (equivale a App.jsx en React)
+  │         ├── layout.js    -> Estructura base <html> y <body> (equivale a index.html)
+  │         ├── globals.css  -> Estilos CSS globales
+  │         └── favicon.ico  -> Icono del navegador
+  ├── next.config.mjs        -> Configuracion de Next.js
+  └── package.json           -> Dependencias y scripts
+
+Equivalencias directas si ya sabes React:
+- React (App.jsx)   == Next.js (src/app/page.js)
+- React (index.html)== Next.js (src/app/layout.js)
+- React (index.css) == Next.js (src/app/globals.css)
+- Rutas: en Next.js NO necesitas react-router; cada carpeta en app/ con un page.js crea una pagina automaticamente.
+
+Pasos para el Hola Mundo (Ultra Rapido con pnpm):
+En App.jsx de tu primer proyecto de React tenías simplemente <h1>Hola mundo</h1>.
+En Next.js con App Router, el archivo equivalente es src/app/page.js.
+
+Paso 1: Abrir la terminal en la carpeta next
+cd "c:\Users\smata\OneDrive\Documentos\Nueva carpeta\igw\next"
+
+Paso 2: Crear el proyecto proyecto1 con pnpm
+- Opcion directa recomendada (en una linea, sin esperas):
+  pnpm create next-app proyecto1 --js --no-tailwind --eslint --app --src-dir --import-alias "@/*" --use-pnpm
+
+- O con asistente interactivo:
+  pnpm create next-app proyecto1 --use-pnpm
+  (Opciones: TypeScript: No, ESLint: Yes, Tailwind: No, src/: Yes, App Router: Yes, Turbopack: Yes, Import alias: No)
+
+Paso 3: Entrar al proyecto
+cd proyecto1
+
+Paso 4: Modificar src/app/page.js
+Abre src/app/page.js, borra todo y pega:
+
+export default function Home() {
+  return (
+    <h1>Hola mundo</h1>
+  );
+}
+
+Paso 5: (Opcional) Limpiar src/app/globals.css
+Para dejarlo limpio como en React, abre src/app/globals.css y déjalo así:
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 2rem;
+}
+
+Paso 6: Iniciar el servidor con pnpm
+pnpm dev
+
+Paso 7: Abrir en el navegador
+Ingresa a http://localhost:3000 y veras tu Hola mundo en pantalla.
+
